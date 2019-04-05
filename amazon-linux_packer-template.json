@@ -18,6 +18,7 @@
   "provisioners": [
     {
       "type": "shell",
+      "remote_path": "/home/ec2-user",
       "inline": [
         "sudo touch /root/test.txt"
       ]
