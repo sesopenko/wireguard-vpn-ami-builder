@@ -1,7 +1,8 @@
 {
   "variables": {
     "aws_region": "{{env `AWS_REGION`}}",
-    "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}"
+    "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}",
+    "ansible_roles_path": "/home/ubuntu/.ansible/roles"
   },
 
   "builders": [{
@@ -19,8 +20,19 @@
     {
       "type": "shell",
       "inline": [
-        "sudo touch /root/test.txt"
+        "sudo apt update",
+        "sudo apt install ansible -y",
+        "sudo mkdir -p /etc/ansible/roles",
+        "mkir /home/ubuntu/clients"
       ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "ansible/playbook.yaml",
+      "role_paths": [
+      ],
+      "playbook_dir": "ansible",
+      "galaxy_file": "ansible/requirements.yaml"
     }
   ]
 }
