@@ -12,7 +12,7 @@
     "ami_name": "{{user `aws_ami_name`}}",
     "ami_description": "Customized Amazon Linux",
     "associate_public_ip_address": "true",
-    "source_ami": "ami-068f09e337d7da0c4"
+    "source_ami": "ami-03804ed633fe58109"
   }],
 
   "provisioners": [
