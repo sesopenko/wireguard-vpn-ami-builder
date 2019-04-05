@@ -20,7 +20,7 @@ phases:
       - echo "access key"
       - ./jq -r '.AccessKeyId' aws_credentials.json
       - echo "secret access key"
-      - /jq -r '.SecretAccessKey' aws_credentials.json
+      - ./jq -r '.SecretAccessKey' aws_credentials.json
       - echo "token"
       - ./jq -r '.Token' aws_credentials.json
       - aws configure set region $AWS_REGION
