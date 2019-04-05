@@ -23,7 +23,7 @@
         "sudo apt update",
         "sudo apt install ansible -y",
         "sudo mkdir -p /etc/ansible/roles",
-        "mkir /home/ubuntu/clients"
+        "mkdir /home/ubuntu/clients"
       ]
     },
     {
@@ -33,6 +33,12 @@
       ],
       "playbook_dir": "ansible",
       "galaxy_file": "ansible/requirements.yaml"
+    },
+    {
+      "type": "file",
+      "source": "/home/ubuntu/clients/",
+      "destination": "~/targets/clients/",
+      "direction" : "download"
     }
   ]
 }

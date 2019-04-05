@@ -12,6 +12,7 @@ phases:
       - ./packer validate amazon-linux_packer-template.json
   build:
     commands:
+      - mkdir -p targets/clients
       ### HashiCorp Packer cannot currently obtain the AWS CodeBuild-assigned role and its credentials
       ### Manually capture and configure the AWS CLI to provide HashiCorp Packer with AWS credentials
       ### More info here: https://github.com/mitchellh/packer/issues/4279
@@ -26,3 +27,7 @@ phases:
   post_build:
     commands:
       - echo "HashiCorp Packer build completed on `date`"
+### See https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+artifacts:
+  files:
+    - targets/**/*
