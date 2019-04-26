@@ -4,7 +4,7 @@
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
   vars:
-    openvpn_donwload_clients: true
+    openvpn_download_clients: true
     openvpn_download_dir: /home/ubuntu/clients
     openvpn_clients:
       - client1

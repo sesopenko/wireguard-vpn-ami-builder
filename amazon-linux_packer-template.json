@@ -33,12 +33,6 @@
       ],
       "playbook_dir": "ansible",
       "galaxy_file": "ansible/requirements.yaml"
-    },
-    {
-      "type": "file",
-      "source": "/home/ubuntu/clients/",
-      "destination": "~/targets/clients/",
-      "direction" : "download"
     }
   ]
 }
