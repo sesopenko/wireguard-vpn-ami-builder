@@ -4,10 +4,8 @@
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
   vars:
-    openvpn_download_clients: true
-    openvpn_download_dir: /home/centos/clients
-    openvpn_clients:
-      - client1
-      - client2
+    wireguard_address: "10.8.0.101/24"
+    wireguard_allowed_ips: "0.0.0.0/0"
+    wireguard_persistent_keepalive: "30"
   roles:
-    - Stouts.openvpn
+    - githubixx.ansible_role_wireguard
