@@ -20,6 +20,7 @@
     {
       "type": "shell",
       "inline": [
+        "cat /etc/apt/sources.list",
         "sudo add-apt-repository universe",
         "sudo apt-get update",
         "sudo apt-get upgrade -y",
