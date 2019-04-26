@@ -1,7 +1,7 @@
 {
   "variables": {
     "aws_region": "{{env `AWS_REGION`}}",
-    "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}"
+    "aws_ami_name": "centos-7_openvpn_{{isotime \"02Jan2006\"}}"
   },
 
   "builders": [{
@@ -12,7 +12,7 @@
     "ami_name": "{{user `aws_ami_name`}}",
     "ami_description": "Official Centos 7 1801_01",
     "associate_public_ip_address": "true",
-    "source_ami": "ami-a042f4d8"
+    "source_ami": "ami-01ed306a12b7d1c96"
   }],
 
   "provisioners": [
