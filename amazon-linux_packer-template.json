@@ -20,9 +20,8 @@
     {
       "type": "shell",
       "inline": [
-        "sudo apt-add-repository universe",
-        "sudo apt update",
-        "sudo apt install ansible -y",
+        "sudo apt-get update",
+        "sudo apt-get install ansible -y",
         "sudo mkdir -p /etc/ansible/roles",
         "mkdir /home/ubuntu/clients"
       ]
