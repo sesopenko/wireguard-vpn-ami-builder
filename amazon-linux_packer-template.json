@@ -12,7 +12,7 @@
     "ami_name": "{{user `aws_ami_name`}}",
     "ami_description": "Official Centos 7 1801_01",
     "associate_public_ip_address": "true",
-    "source_ami": "ami-ee6a718a"
+    "source_ami": "ami-a042f4d8"
   }],
 
   "provisioners": [
