@@ -7,5 +7,14 @@
     wireguard_address: "10.8.0.101/24"
     wireguard_allowed_ips: "0.0.0.0/0"
     wireguard_persistent_keepalive: "30"
+    harden_linux_ufw_rules:
+      - rule: "allow"
+        to_port: "22"
+        protocol: "tcp"
+    harden_linux_sysctl_settings_user:
+      "net.ipv4.ip_forward": 1
+      "net.ipv6.conf.default.forwarding": 1
+      "net.ipv6.conf.all.forwarding": 1
   roles:
     - githubixx.ansible_role_wireguard
+    - githubixx.harden-linux
