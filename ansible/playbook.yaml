@@ -5,7 +5,7 @@
   become: yes           # majority of CIS tasks require root
   vars:
     openvpn_download_clients: true
-    openvpn_download_dir: /home/centos/clients
+    openvpn_download_dir: /home/ubuntu/clients
     openvpn_clients:
       - client1
       - client2

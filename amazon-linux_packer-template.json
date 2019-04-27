@@ -20,11 +20,11 @@
     {
       "type": "shell",
       "inline": [
+        "cat /etc/apt/sources.list",
+        "sudo add-apt-repository universe",
         "sudo apt-get update",
-        "sudo apt-get install software-properties-common -y",
-        "sudo apt-add-repository --yes --update ppa:ansible/ansible",
+        "sudo apt-get upgrade -y",
         "sudo apt-get install ansible -y",
-        "sudo apt-get install easy-rsa -y",
         "sudo mkdir -p /etc/ansible/roles",
         "mkdir /home/ubuntu/clients"
       ]
