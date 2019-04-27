@@ -1,32 +1,28 @@
 {
   "variables": {
     "aws_region": "{{env `AWS_REGION`}}",
-    "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}",
-    "ansible_roles_path": "/home/ubuntu/.ansible/roles"
+    "aws_ami_name": "centos-7_openvpn_{{isotime \"02Jan2006\"}}"
   },
 
   "builders": [{
     "type": "amazon-ebs",
     "region": "{{user `aws_region`}}",
     "instance_type": "t2.micro",
-    "ssh_username": "ubuntu",
+    "ssh_username": "centos",
     "ami_name": "{{user `aws_ami_name`}}",
-    "ami_description": "Customized Amazon Linux",
+    "ami_description": "Official Centos 7 1801_01",
     "associate_public_ip_address": "true",
-    "source_ami": "ami-03804ed633fe58109"
+    "source_ami": "ami-01ed306a12b7d1c96"
   }],
 
   "provisioners": [
     {
       "type": "shell",
       "inline": [
-        "cat /etc/apt/sources.list",
-        "sudo add-apt-repository universe",
-        "sudo apt-get update",
-        "sudo apt-get upgrade -y",
-        "sudo apt-get install ansible -y",
+        "sudo yum install epel-release -y",
+        "sudo yum install ansible -y",
         "sudo mkdir -p /etc/ansible/roles",
-        "mkdir /home/ubuntu/clients"
+        "mkdir /home/centos/clients"
       ]
     },
     {
