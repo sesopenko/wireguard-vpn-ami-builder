@@ -13,9 +13,11 @@
     name: "wireguard"
     state: latest
 - name: "Create private key"
-  shell: "wg genkey > /root/privatekey"
+  shell: "wg genkey > /home/ubuntu/privatekey"
 - name: "Create public key"
-  shell: "wg pubkey < /root/privatekey > /root/publickey"
+  shell: "wg pubkey < /home/ubuntu/privatekey > /home/ubuntu/publickey"
+- name: "Create public key"
+  shell: "chown ubuntu:ubuntu /home/ubuntu/*key"
 #- name: "Create wireguard config file"
 #  copy:
 #    dest: "/etc/wireguard/wg0.conf"
