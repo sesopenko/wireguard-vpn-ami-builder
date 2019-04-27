@@ -5,3 +5,7 @@
   apt:
     name: "*"
     state: latest
+- name: easy-rsa
+  apt:
+    name: "easy-rsa"
+    state: latest
