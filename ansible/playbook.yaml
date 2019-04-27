@@ -4,9 +4,13 @@
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
   vars:
-    openvpn_port: 4300
-    clients:
-      - client1
-      - client2
+    harden_linux_ufw_rules:
+      - rule: "allow"
+        to_port: "22"
+        protocol: "tcp"
+    harden_linux_sysctl_settings_user:
+      "net.ipv4.ip_forward": 1
+      "net.ipv6.conf.default.forwarding": 1
+      "net.ipv6.conf.all.forwarding": 1
   roles:
-    - blaet.openvpn
+    - githubixx.harden-linux

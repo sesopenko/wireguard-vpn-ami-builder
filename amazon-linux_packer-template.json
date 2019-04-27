@@ -1,28 +1,31 @@
 {
   "variables": {
     "aws_region": "{{env `AWS_REGION`}}",
-    "aws_ami_name": "centos-7_openvpn_{{isotime \"02Jan2006\"}}"
+    "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}",
+    "ansible_roles_path": "/home/ubuntu/.ansible/roles"
   },
 
   "builders": [{
     "type": "amazon-ebs",
     "region": "{{user `aws_region`}}",
     "instance_type": "t2.micro",
-    "ssh_username": "centos",
+    "ssh_username": "ubuntu",
     "ami_name": "{{user `aws_ami_name`}}",
-    "ami_description": "Official Centos 7 1801_01",
+    "ami_description": "Customized Amazon Linux",
     "associate_public_ip_address": "true",
-    "source_ami": "ami-01ed306a12b7d1c96"
+    "source_ami": "ami-03804ed633fe58109"
   }],
 
   "provisioners": [
     {
       "type": "shell",
       "inline": [
-        "sudo yum install epel-release -y",
-        "sudo yum install ansible -y",
+        "sudo apt-get update",
+        "sudo apt-get install software-properties-common -y",
+        "sudo apt-add-repository --yes --update ppa:ansible/ansible",
+        "sudo apt-get install ansible -y",
         "sudo mkdir -p /etc/ansible/roles",
-        "mkdir /home/centos/clients"
+        "mkdir /home/ubuntu/clients"
       ]
     },
     {
@@ -32,6 +35,12 @@
       ],
       "playbook_dir": "ansible",
       "galaxy_file": "ansible/requirements.yaml"
+    },
+    {
+      "type": "file",
+      "source": "/home/ubuntu/publickey",
+      "destination": "~/targets/publickey",
+      "direction" : "download"
     }
   ]
 }
