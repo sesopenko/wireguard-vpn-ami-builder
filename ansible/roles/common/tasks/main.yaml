@@ -1,36 +1,4 @@
 ---
 
 # Ensure all packages have been patched
-- name: upgrade all packages
-  yum:
-    name: "*"
-    state: latest
-- name: "Add wireguard repository"
-  apt_repository:
-    repo: ppa:wireguard/wireguard
-- name: "Install wireguard"
-  apt:
-    name: "wireguard"
-    state: latest
-- name: "Create private key"
-  shell: "wg genkey > /home/ubuntu/privatekey"
-- name: "Create public key"
-  shell: "wg pubkey < /home/ubuntu/privatekey > /home/ubuntu/publickey"
-- name: "Create public key"
-  shell: "chown ubuntu:ubuntu /home/ubuntu/*key"
-#- name: "Create wireguard config file"
-#  copy:
-#    dest: "/etc/wireguard/wg0.conf"
-#    content: |
-#      [Interface]
-#      PrivateKey = <Private Key>
-#      Address = 203.0.113.5/24, fd86:ea04:1115::1/64
-#      ListenPort = 51820
-#      PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-#      PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-#      SaveConfig = true
-#- name: "Enable wireguard service"
-#  service:
-#    name: "wg-quick@wg0"
-#    enabled: yes
-#    state: started
+
