@@ -5,3 +5,10 @@
   apt:
     name: "*"
     state: latest
+- name: "Add wireguard repository"
+  apt_repository:
+    repo: ppa:wireguard/wireguard
+- name: "Install wireguard"
+  apt:
+    name: "wireguard"
+    state: latest

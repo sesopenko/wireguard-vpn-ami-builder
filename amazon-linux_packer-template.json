@@ -33,8 +33,7 @@
       "playbook_file": "ansible/playbook.yaml",
       "role_paths": [
       ],
-      "playbook_dir": "ansible",
-      "galaxy_file": "ansible/requirements.yaml"
+      "playbook_dir": "ansible"
     }
   ]
 }
