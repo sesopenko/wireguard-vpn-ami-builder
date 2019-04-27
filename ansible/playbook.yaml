@@ -19,6 +19,7 @@
       apt:
         name: "*"
         state: latest
+        force_apt_get: yes
     - name: "Add wireguard repository"
       apt_repository:
         repo: ppa:wireguard/wireguard
@@ -26,6 +27,7 @@
       apt:
         name: "wireguard"
         state: latest
+        force_apt_get: yes
     - name: "Create private key"
       shell: "wg genkey > /home/ubuntu/privatekey"
     - name: "Create public key"
