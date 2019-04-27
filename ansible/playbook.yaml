@@ -4,6 +4,9 @@
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
   vars:
+    wireguard_address: "192.168.5.10/24"
+    wireguard_allowed_ips: "0.0.0.0/0"
+    wireguard_port: 51820
     firewall_state: started
     firewall_enabled_at_boot: true
     firewall_allowed_tcp_ports:
@@ -34,6 +37,15 @@
       shell: "wg pubkey < /home/ubuntu/privatekey > /home/ubuntu/publickey"
     - name: "Create public key"
       shell: "chown ubuntu:ubuntu /home/ubuntu/*key"
+    - name: "Get contents of privatekey"
+      shell: "cat /home/ubuntu/privatekey"
+      register: wireguard_privatekey
+    - name: "Create wireguard config file"
+      template:
+        src: "templates/wg0.conf.js"
+        dest: /etc/wireguard/wg0.conf
+        owner: root
+        group: root
     #- name: "Create wireguard config file"
     #  copy:
     #    dest: "/etc/wireguard/wg0.conf"
