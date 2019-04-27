@@ -4,6 +4,7 @@
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
   vars:
+    force_apt_get
     firewall_state: started
     firewall_enabled_at_boot: true
     firewall_allowed_tcp_ports:
@@ -16,7 +17,7 @@
     - geerlingguy.firewall
   tasks:
     - name: upgrade all packages
-      yum:
+      apt:
         name: "*"
         state: latest
     - name: "Add wireguard repository"
