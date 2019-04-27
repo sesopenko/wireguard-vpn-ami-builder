@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: vpn
   connection: local
   gather_facts: true    # gather OS info that is made available for tasks/roles
   become: yes           # majority of CIS tasks require root
